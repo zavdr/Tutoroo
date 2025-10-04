@@ -31,122 +31,131 @@ const Session = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-secondary/30 to-background">
-      <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Tutoroo
-          </Link>
-          
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3 bg-secondary/50 px-4 py-2 rounded-xl">
-              <GraduationCap className={`h-5 w-5 ${mode === "tutor" ? "text-primary" : "text-muted-foreground"}`} />
-              <Switch 
-                checked={mode === "student"} 
-                onCheckedChange={(checked) => setMode(checked ? "student" : "tutor")}
-              />
-              <Lightbulb className={`h-5 w-5 ${mode === "student" ? "text-accent" : "text-muted-foreground"}`} />
+    <div className="min-h-screen bg-background">
+      {/* FaceTime-style header */}
+      <div className="absolute top-6 left-6 z-20">
+        <Link to="/" className="text-xl font-semibold text-foreground hover:text-foreground/80 transition-colors">
+          Tutoroo
+        </Link>
+      </div>
+
+      <div className="absolute top-6 right-6 z-20 flex items-center gap-4">
+        <div className="flex items-center gap-2 bg-card/80 backdrop-blur-md px-4 py-2 rounded-full border border-border">
+          <GraduationCap className={`h-4 w-4 ${mode === "tutor" ? "text-foreground" : "text-muted-foreground"}`} />
+          <Switch 
+            checked={mode === "student"} 
+            onCheckedChange={(checked) => setMode(checked ? "student" : "tutor")}
+          />
+          <Lightbulb className={`h-4 w-4 ${mode === "student" ? "text-foreground" : "text-muted-foreground"}`} />
+          <span className="text-sm ml-2 text-foreground">
+            {mode === "tutor" ? "Tutor" : "Student"}
+          </span>
+        </div>
+      </div>
+
+      {/* Main FaceTime-style layout */}
+      <div className="h-screen flex">
+        {/* Large video/screen area */}
+        <div className="flex-1 relative bg-black">
+          {!cameraOn && !screenShare ? (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center space-y-4">
+                <div className="text-8xl opacity-20">📚</div>
+                <p className="text-muted-foreground">Camera or screen share off</p>
+              </div>
             </div>
-            <span className="text-sm font-medium">
-              {mode === "tutor" ? "🎓 Tutor Mode" : "🤔 Curious Student"}
-            </span>
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-card/20 to-background/20 flex items-center justify-center">
+              <p className="text-xl font-medium text-foreground/80">
+                {screenShare ? "Screen Sharing Active" : "Camera Active"}
+              </p>
+            </div>
+          )}
+
+          {/* Floating controls at bottom */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3">
+            <Button
+              variant={cameraOn ? "default" : "secondary"}
+              size="lg"
+              onClick={() => setCameraOn(!cameraOn)}
+              className="rounded-full h-14 px-6 shadow-lg"
+            >
+              <Camera className="h-5 w-5 mr-2" />
+              {cameraOn ? "Camera On" : "Camera Off"}
+            </Button>
+            <Button
+              variant={screenShare ? "default" : "secondary"}
+              size="lg"
+              onClick={() => setScreenShare(!screenShare)}
+              className="rounded-full h-14 px-6 shadow-lg"
+            >
+              <Monitor className="h-5 w-5 mr-2" />
+              {screenShare ? "Sharing" : "Share Screen"}
+            </Button>
+          </div>
+
+          {/* Insights overlay - top left */}
+          <div className="absolute top-6 left-6 flex gap-3">
+            <div className="bg-card/90 backdrop-blur-md px-4 py-2 rounded-lg border border-border">
+              <p className="text-sm text-muted-foreground">Time</p>
+              <p className="text-lg font-semibold text-foreground">12:34</p>
+            </div>
+            <div className="bg-card/90 backdrop-blur-md px-4 py-2 rounded-lg border border-border">
+              <p className="text-sm text-muted-foreground">Confidence</p>
+              <p className="text-lg font-semibold text-foreground">85%</p>
+            </div>
+            <div className="bg-card/90 backdrop-blur-md px-4 py-2 rounded-lg border border-border">
+              <p className="text-sm text-muted-foreground">Questions</p>
+              <p className="text-lg font-semibold text-foreground">3</p>
+            </div>
           </div>
         </div>
-      </header>
 
-      <div className="container mx-auto px-6 py-8">
-        <div className="grid lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 space-y-6">
-            <Card className="p-6 shadow-lg">
-              <div className="aspect-video bg-muted/50 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden">
-                {!cameraOn && !screenShare ? (
-                  <div className="text-center space-y-4">
-                    <div className="text-6xl">📚</div>
-                    <p className="text-muted-foreground">Start your session by enabling camera or screen share</p>
-                  </div>
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                    <p className="text-lg font-medium">{screenShare ? "Screen Sharing Active" : "Camera Active"}</p>
-                  </div>
-                )}
-              </div>
-              
-              <div className="flex gap-3">
-                <Button
-                  variant={cameraOn ? "default" : "outline"}
-                  className="flex-1"
-                  onClick={() => setCameraOn(!cameraOn)}
-                >
-                  <Camera className="h-5 w-5 mr-2" />
-                  {cameraOn ? "Camera On" : "Camera Off"}
-                </Button>
-                <Button
-                  variant={screenShare ? "default" : "outline"}
-                  className="flex-1"
-                  onClick={() => setScreenShare(!screenShare)}
-                >
-                  <Monitor className="h-5 w-5 mr-2" />
-                  {screenShare ? "Sharing" : "Share Screen"}
-                </Button>
-              </div>
-            </Card>
-
-            <Card className="p-6 shadow-lg">
-              <h3 className="text-lg font-semibold mb-4">Real-time Insights</h3>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-secondary/50 p-4 rounded-xl text-center">
-                  <p className="text-2xl font-bold text-primary">12:34</p>
-                  <p className="text-sm text-muted-foreground">Time Spent</p>
-                </div>
-                <div className="bg-secondary/50 p-4 rounded-xl text-center">
-                  <p className="text-2xl font-bold text-accent">85%</p>
-                  <p className="text-sm text-muted-foreground">Confidence</p>
-                </div>
-                <div className="bg-secondary/50 p-4 rounded-xl text-center">
-                  <p className="text-2xl font-bold text-primary">3</p>
-                  <p className="text-sm text-muted-foreground">Questions</p>
-                </div>
-              </div>
-            </Card>
+        {/* Chat sidebar - FaceTime style */}
+        <div className="w-96 bg-card border-l border-border flex flex-col">
+          <div className="p-4 border-b border-border">
+            <h3 className="font-semibold text-foreground">Chat</h3>
           </div>
-
-          <Card className="p-6 shadow-lg flex flex-col h-[calc(100vh-12rem)]">
-            <h3 className="text-lg font-semibold mb-4">Chat with Tutoroo</h3>
-            
-            <ScrollArea className="flex-1 pr-4 mb-4">
-              <div className="space-y-4">
-                {messages.map((msg, idx) => (
+          
+          <ScrollArea className="flex-1 p-4">
+            <div className="space-y-3">
+              {messages.map((msg, idx) => (
+                <div
+                  key={idx}
+                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                >
                   <div
-                    key={idx}
-                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                    className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${
+                      msg.role === "user"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-secondary text-secondary-foreground"
+                    }`}
                   >
-                    <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                        msg.role === "user"
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-secondary text-secondary-foreground"
-                      }`}
-                    >
-                      {msg.content}
-                    </div>
+                    <p className="text-sm">{msg.content}</p>
                   </div>
-                ))}
-              </div>
-            </ScrollArea>
+                </div>
+              ))}
+            </div>
+          </ScrollArea>
 
+          <div className="p-4 border-t border-border">
             <div className="flex gap-2">
               <Input
-                placeholder="Type your message..."
+                placeholder="Message..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-                className="rounded-xl"
+                className="rounded-full bg-secondary border-0"
               />
-              <Button onClick={handleSendMessage} size="icon" className="rounded-xl">
-                <Send className="h-5 w-5" />
+              <Button 
+                onClick={handleSendMessage} 
+                size="icon" 
+                className="rounded-full h-10 w-10 flex-shrink-0"
+              >
+                <Send className="h-4 w-4" />
               </Button>
             </div>
-          </Card>
+          </div>
         </div>
       </div>
     </div>
