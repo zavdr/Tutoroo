@@ -6,7 +6,7 @@
 
 ## 🚀 Overview
 
-Learning is often isolating — many students struggle alone, unsure if they’re on the right track or even asking the right questions. **Tutoroo** changes that.  
+Learning is often isolating, many students struggle alone, unsure if they’re on the right track or even asking the right questions. **Tutoroo** changes that.  
 It’s not just another chatbot or tutoring app. Instead, it behaves like a *co-student* who learns beside you — asking curious questions, nudging you to explain your thinking, and then seamlessly transforming into a tutor the moment you say **"help"**.
 
 By combining voice, vision, and machine learning, Tutoroo makes studying feel like a shared conversation — human, dynamic, and deeply engaging.
