@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Camera, Monitor, Mic, MicOff, GraduationCap, Lightbulb, BarChart3 } from "lucide-react";
+import { Camera, Monitor, Mic, MicOff, GraduationCap, Lightbulb, BarChart3, PenTool, Bot } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Session = () => {
@@ -49,13 +49,27 @@ const Session = () => {
               </span>
             </div>
 
-            {/* Dashboard button */}
-            <Link to="/dashboard">
-              <Button variant="outline" size="sm" className="rounded-full">
-                <BarChart3 className="h-4 w-4 mr-2" />
-                Dashboard
-              </Button>
-            </Link>
+            {/* Navigation buttons */}
+            <div className="flex items-center gap-2">
+              <Link to="/whiteboard">
+                <Button variant="outline" size="sm" className="rounded-full">
+                  <PenTool className="h-4 w-4 mr-2" />
+                  Whiteboard
+                </Button>
+              </Link>
+              <Link to="/ai-tutor">
+                <Button variant="outline" size="sm" className="rounded-full">
+                  <Bot className="h-4 w-4 mr-2" />
+                  AI Tutor
+                </Button>
+              </Link>
+              <Link to="/dashboard">
+                <Button variant="outline" size="sm" className="rounded-full">
+                  <BarChart3 className="h-4 w-4 mr-2" />
+                  Dashboard
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
