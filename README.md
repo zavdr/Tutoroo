@@ -1,12 +1,12 @@
 # 📚 Tutoroo — the AI that learns *with* you
 
-![TypeScript](https://img.shields.io/badge/TypeScript-70.3%25-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Python](https://img.shields.io/badge/Python-26.2%25-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Batchfile](https://img.shields.io/badge/Batchfile-1.6%25-4D4D4D?style=for-the-badge&logo=windows-terminal&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-0.9%25-563D7C?style=for-the-badge&logo=css3&logoColor=white)
-![Shell](https://img.shields.io/badge/Shell-0.4%25-89E051?style=for-the-badge&logo=gnu-bash&logoColor=white)
-![HTML](https://img.shields.io/badge/HTML-0.4%25-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-0.2%25-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Batchfile](https://img.shields.io/badge/Batchfile-4D4D4D?style=for-the-badge&logo=windows-terminal&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-563D7C?style=for-the-badge&logo=css3&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell-89E051?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 An intelligent, adaptive learning companion that behaves like a real study partner — questioning your reasoning, coaching you through mistakes, and stepping in with explanations *only when you ask for help*.
 
