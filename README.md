@@ -79,11 +79,3 @@ An intelligent, adaptive learning companion that behaves like a real study partn
 **security & performance**
 - 🔐 AES-256 encryption, JWT tokens  
 - ⚡ async inference + TensorRT acceleration
-
----
-
-## 🧠 example problem
-
-```latex
-2x^2 + 7x - 3 = 23
-Solve for x
